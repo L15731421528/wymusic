@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>网易云音乐播放器</title>
+    <!-- IMPORT CSS -->
+    <link rel="stylesheet" href="./css/reset.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/prefixfree.min.js" async></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 头部 -->
+        <div class="header">
+            <div class="gun">
+                <img src="./images/needle-ab.png" alt="">
+            </div>
+            <div class="circle">
+                <div class="black">
+                    <img src="./images/disc.png" alt="">
+                </div>
+                <div class="backPic">
+                    <img src="./images/109951165350001679.jpg" alt="">
+                </div>
+                <div class="innerPic">
+                    <img src="./images/下载.png" alt="">
+                </div>
+
+            </div>
+        </div>
+        <!-- 歌词部分 -->
+        <main class="main-box">
+            <div class="wrapper">
+                <!-- <p class="active">蔚蓝的天空，温柔的你</p>
+                <p>编曲 : FBJ</p> -->
+            </div>
+        </main>
+        <!-- 歌词下边的那个 -->
+        <div class="m-link">
+            <div class="go-singing">
+                <img src="https://p5.music.126.net/obj/wo3DlcOGw6DClTvDisK1/10380183212/c354/bda0/8219/22227b514ca899d2759a388ffbac109b.png"
+                    alt="">
+            </div>
+            <div class="sing-together">
+                <span class="icon"></span>
+                <span class="songText">一起唱歌</span>
+                <img src='./images/下载 (1).png'alt="">
+            </div>
+        </div>
+        <!-- 尾部 -->
+        <div class="footer">
+            <div class="open">打开</div>
+            <div class="download">下载</div>
+        </div>
+
+        <!-- 其它 -->
+        <div class="mark-image"></div>
+        <div class="mark-overlay"></div>
+        <div class="loading-box">
+            <div class="content">
+                <img src="images/loading.gif" alt="">
+                <span>正在努力加载中...</span>
+            </div>
+        </div>
+        <audio src=""  id="audioBox" preload="metadata"></audio>
+    </div>
+
+    <!-- IMPORT JS -->
+    <script>
+        (function () {
+            const app = document.querySelector('#app'),
+                HTML = document.documentElement
+            const computed = function computed() {
+                let orien = Math.abs(window.orientation)
+                if (orien === 90) {
+                    // 切换到横屏
+                    alert('横屏体验不佳，请您切换到竖屏')
+                    app.style.display = 'none'
+                    return
+                }
+                // 当前是竖屏
+                app.style.display = 'block'
+
+                // 计算REM的换算比例
+                let deviceW = HTML.clientWidth,
+                    designW = 375,
+                    initialRatio = 100
+                if (deviceW > 540) deviceW = 540
+                let currentRatio = deviceW / designW * initialRatio
+                HTML.style.fontSize = currentRatio + 'px'
+            }
+            computed()
+            window.addEventListener('resize', computed)
+            // 基于 resize 代替 orientationchange 事件：这样可以适配模拟器中，设备的切换场景
+        })();
+    </script>
+    <script src="js/api.js"></script>
+    <script src="js/fastclick.js"></script>
+    <script src="js/index.js"></script>
+</body>
+
+</html>

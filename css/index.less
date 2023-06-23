@@ -1,0 +1,275 @@
+html {
+    font-size: 100px; //1REM=100PX「在375px的设计稿中」
+}
+
+html,
+body,
+#app {
+    height: 100%;
+    overflow: hidden;
+
+}
+
+#app {
+    position: relative;
+    margin: 0 auto;
+    max-width: 5.4rem;
+    font-size: .14rem;
+}
+/* 通用样式 */
+@com-green: #fff;
+@com-gray: rgba(255, 255, 255, .5);
+
+
+
+/* Loading层 */
+.loading-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    box-sizing: border-box;
+    width: 100vw;
+    height: 100vh;
+    background: #555;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .content {
+
+        img,
+        span {
+            display: block;
+        }
+
+        img {
+            margin: 0 auto;
+            width: .5rem;
+            height: .5rem;
+        }
+
+        span {
+            margin-top: .1rem;
+            color: rgba(74, 214, 93,.6);
+        }
+    }
+}
+// .loading-box{
+//     display: none;
+// }
+
+/* 背景层 */
+.mark-overlay,
+.mark-image {
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+}
+
+.mark-image {
+    z-index: -2;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: blur(6px); // 设置模糊度
+}
+
+.mark-overlay {
+    z-index: -1;
+    background: rgba(0, 0, 0, .5);
+}
+/* 头部区域样式 */
+.header {
+    position: relative;
+    margin-top: .5rem;
+    .gun {
+        transform: rotate(-20deg);
+        position: absolute;
+        z-index: 100;
+        top: -21%;
+        right: 34%;
+
+        img {
+            width: .48rem;
+            height: 1.3rem;
+        }
+    }
+    .circle {
+        position: relative;
+        margin: 0 auto;
+        width: 2.47rem;
+        height: 2.47rem;
+        border-radius: 50%;
+        border: 0.10rem solid #333232;
+
+        .black {
+            margin: 0 auto;
+            position: absolute;
+            top: -6%;
+            left: -6%;
+
+            img {
+                width: 2.75rem;
+                height: 2.75rem;
+            }
+        }
+
+        .innerPic {
+            margin: 0 auto;
+            position: absolute;
+            top: 38%;
+            left: 38%;
+            width: .56rem;
+            height: .56rem;
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .backPic {
+            margin: 0 auto;
+            width: 1.68rem;
+            height: 1.68rem;
+            position: absolute;
+            top: 16%;
+            left: 16%;
+
+            &.move{
+                animation: musicMove 10s linear 0s infinite both;
+            }
+            
+
+            img {
+                border-radius: 50%;
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+    }
+}
+//歌词部分
+.main-box {
+    margin: 0 auto;
+    margin-top: .1rem;
+    overflow: hidden;
+    .wrapper {
+        height: 1.51rem;
+        transform: translateY(0);
+        transition: transform .3s;
+        p {
+            height: .5rem;
+            line-height: 20px;
+            text-align: center;
+            font-size: .15rem;
+            color: @com-gray;
+            color: #AAA;
+            &.active {
+                color: @com-green;
+                transition: color .3s;
+                font-size: large;
+            }
+        }
+    }
+}
+
+//歌词下边的那部分
+.m-link {
+    // width: 3.75rem;
+    display: flex;
+    justify-content: center;
+    height: .3rem;
+    margin-top: .25rem;
+
+
+    .go-singing {
+        width: 1.2rem;
+        height: .27rem;
+        // background-color: #fff;
+
+        img {
+            width: 1.2rem;
+            height: .27rem;
+        }
+    }
+
+    .sing-together {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        width: 1.2rem;
+        height: .27rem;
+        line-height: .27rem;
+        // background-color: #f00;
+
+        .icon {
+            display: block;
+            width: .2rem;
+            height: .2rem;
+            background: url('https://p5.music.126.net/obj/wo3DlcOGw6DClTvDisK1/10958309011/6b24/2279/c945/438870d95af399eedec241ec6de097b1.png') no-repeat;
+            background-size: cover
+        }
+
+        .songText {
+            color: #FFFFFFCC;
+        }
+
+        img {
+            width: .15rem;
+            height: .15rem;
+        }
+    }
+}
+//尾部区域
+.footer {
+
+    position: fixed;
+    left: 50%;
+    bottom: .2rem;
+    padding: .1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: .18rem;
+    transform: translateX(-50%);
+    .open {
+        color: red;
+        text-align: center;
+        line-height: .41rem;
+        border-radius: 20px;
+        width: 1.73rem;
+        height: .41rem;
+        border: 1px solid red;
+    }
+
+    .download {
+        margin-left:.1rem;
+        text-align: center;
+        line-height: .41rem;
+        border-radius: 20px;
+        color: #fff;
+        background: red;
+        width: 1.73rem;
+        height: .41rem;
+        border: 1px solid red;
+    }
+}
+
+@keyframes musicMove {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+/* 音频 */
+#audioBox {
+    display: none;
+}
